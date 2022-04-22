@@ -1,5 +1,8 @@
 <template>
-    <div id="Login-form" class="w-[500px] min-h-[350px] mx-auto mt-[100px]">
+    <div id="Login-form" class="w-[500px] min-h-[350px] mx-auto mt-[50px]">
+        <div>
+            <img class="mx-auto w-[160px] h-[70px] mb-3" src="../assets/images/logo.png" alt="">
+        </div>
         <div id="Login-mode" class="w-[90%] h-[50px] bg-slate-300 flex mx-auto">
             <div
                 id="Login"
