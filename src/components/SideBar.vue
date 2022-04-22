@@ -7,7 +7,7 @@
         <div id="logo" class="">
             <img
                 class="w-[110px] h-[45px] mx-auto mt-2 mb-2"
-                src=".././assets/logo.png"
+                src=".././assets/images/logo.png"
                 alt=""
             />
         </div>
@@ -27,7 +27,7 @@
             >
                 <img
                     class="w-5 h-5 ml-3 mr-4"
-                    src="../assets/user1.png"
+                    src="../assets/images/user1.png"
                     alt=""
                 />
                 Nhân viên
@@ -64,7 +64,7 @@
             >
                 <img
                     class="w-5 h-5 ml-3 mr-4"
-                    src="../assets/user1.png"
+                    src="../assets/images/user1.png"
                     alt=""
                 />
                 Khách hàng
@@ -87,6 +87,7 @@
                 </div>
             </div>
             <div
+                
                 class="
                     sidebar-item
                     h-12
@@ -98,10 +99,11 @@
                     relative
                 "
                 style="align-items: center"
+                @click="emitter.emit('clickProject')"
             >
                 <img
                     class="w-5 h-5 ml-3 mr-4"
-                    src="../assets/product.png"
+                    src="../assets/images/product.png"
                     alt=""
                 />
                 Dự án
