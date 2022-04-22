@@ -1,5 +1,9 @@
 <template>
-    <div v-if="isTogle" class="w-1/5 h-screen" style="background-color: #2f3c52">
+    <div
+        v-if="isTogle"
+        class="w-1/5 h-screen"
+        style="background-color: #2f3c52"
+    >
         <div id="logo" class="">
             <img
                 class="w-[110px] h-[45px] mx-auto mt-2 mb-2"
@@ -39,7 +43,6 @@
                         rounded
                         hidden
                     "
-                    
                 >
                     <div class="submenu-item">Danh sách nhân viên</div>
                     <div class="submenu-item">Biểu đồ nhân viên</div>
@@ -126,17 +129,16 @@
 
 <script>
 export default {
-        created() {
-        this.emitter.on("clickTogle" , () =>{
+    created() {
+        this.emitter.on("clickTogle", () => {
             this.isTogle = !this.isTogle;
         });
-
     },
-    data(){
-        return{
-            isTogle:true
-        }
-    }
+    data() {
+        return {
+            isTogle: true,
+        };
+    },
 };
 </script>
 
@@ -161,11 +163,13 @@ export default {
     background-color: #579aff;
     border-radius: 4px;
 }
- .sidebar-item:hover #submenu-employee {
+.sidebar-item:hover #submenu-employee {
     display: inline;
-} .sidebar-item:hover #submenu-customer {
+}
+.sidebar-item:hover #submenu-customer {
     display: inline;
-} .sidebar-item:hover #submenu-product {
+}
+.sidebar-item:hover #submenu-product {
     display: inline;
 }
 </style>
