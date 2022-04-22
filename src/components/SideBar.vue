@@ -1,5 +1,5 @@
 <template>
-    <div class="w-1/5 h-screen" style="background-color: #2f3c52">
+    <div v-if="isTogle" class="w-1/5 h-screen" style="background-color: #2f3c52">
         <div id="logo" class="">
             <img
                 class="w-[110px] h-[45px] mx-auto mt-2 mb-2"
@@ -34,7 +34,7 @@
                         bg-[#5388BB]
                         w-full
                         h-auto
-                        top-[50%]
+                        top-[30%]
                         left-[100%]
                         rounded
                         hidden
@@ -71,7 +71,7 @@
                         bg-[#5388BB]
                         w-full
                         h-auto
-                        top-[50%]
+                        top-[30%]
                         left-[100%]
                         rounded
                         hidden
@@ -101,14 +101,14 @@
                     src="../assets/product.png"
                     alt=""
                 />
-                Sản phẩm
-                <div
+                Dự án
+                <!-- <div
                     class="
                         absolute
                         bg-[#5388BB]
                         w-full
                         h-auto
-                        top-[50%]
+                        top-[30%]
                         left-[100%]
                         rounded
                         hidden
@@ -118,14 +118,26 @@
                     <div class="submenu-item">Danh sách nhân viên</div>
                     <div class="submenu-item">Biểu đồ nhân viên</div>
                     <div class="submenu-item">Thống kê</div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+        created() {
+        this.emitter.on("clickTogle" , () =>{
+            this.isTogle = !this.isTogle;
+        });
+
+    },
+    data(){
+        return{
+            isTogle:true
+        }
+    }
+};
 </script>
 
 <style scoped>
@@ -147,6 +159,7 @@ export default {};
 }
 .submenu-item:hover {
     background-color: #579aff;
+    border-radius: 4px;
 }
  .sidebar-item:hover #submenu-employee {
     display: inline;

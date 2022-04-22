@@ -1,6 +1,6 @@
 <template>
-    <div id="Login-form" class="w-[700px] min-h-[350px] mx-auto mt-[100px]">
-        <div id="Login-mode" class="w-[90%] h-[50px] bg-slate-300 flex mx-auto ">
+    <div id="Login-form" class="w-[500px] min-h-[350px] mx-auto mt-[100px]">
+        <div id="Login-mode" class="w-[90%] h-[50px] bg-slate-300 flex mx-auto">
             <div
                 id="Login"
                 class="
@@ -110,13 +110,25 @@ export default {
         LoginMode() {
             this.isLogin = true;
             this.isRegis = false;
+            document.getElementById("Login").style.borderBottom =
+                "3px solid rgb(36, 204, 255) ";
+            document.getElementById("Login").style.backgroundColor =
+                "#C9D5E1";
+            document.getElementById("Regis").style.borderBottom = "none";
+            document.getElementById("Regis").style.backgroundColor = "#EEEEEB";
         },
         RegisMode() {
             this.isLogin = false;
             this.isRegis = true;
+            document.getElementById("Regis").style.borderBottom =
+                "3px solid rgb(36, 204, 255) ";
+            document.getElementById("Regis").style.backgroundColor =
+                "#C9D5E1";
+            document.getElementById("Login").style.borderBottom = "none";
+            document.getElementById("Login").style.backgroundColor = "#EEEEEB";
         },
         LoginEvent() {
-            window.open("http://localhost:3000/home", "_self")
+            window.open("http://localhost:3000/home", "_self");
         },
     },
     data() {
@@ -131,11 +143,15 @@ export default {
 <style scoped>
 .mode:hover {
     cursor: pointer;
-    background-color: rgb(238, 238, 238);
-    border-bottom: 3px solid rgb(36, 204, 255);
 }
 input:focus {
     outline: none;
     border: 2px solid rgb(137, 212, 241);
+}
+#Login {
+    border-bottom: 3px solid rgb(36, 204, 255); 
+}
+#Regis{
+    background-color: #EDEEE8;
 }
 </style>

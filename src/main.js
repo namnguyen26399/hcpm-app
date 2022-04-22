@@ -4,6 +4,11 @@ import './index.css'
 import router from './index.js'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+import mitt from 'mitt'
+const emitter = mitt()
 
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+app.config.globalProperties.emitter = emitter
+
+app.use(router).mount('#app')
