@@ -30,3 +30,21 @@
     width: 50px;
     font-size: 12px;
 }
+
+.table-heading {
+    background-color: #d8dbe0;
+}
+
+.table {
+    box-shadow: 0 0 2px #282323d1;
+    margin-top: 30px;
+}
+
+.table-title ,.table-content {
+    padding: 12px 8px;
+}
+
+.action {
+    border-left: 1px solid #7a808980;
+    text-align: center;
+}
