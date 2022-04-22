@@ -8,7 +8,7 @@
                 <span>12/12/2018</span>
                 <div><span>Đối tác : </span>
                 <span>Trường đại học Công nghiệp Hà Nội</span></div>
-                <div><img src="../assets/prj1.jpg.crdownload" alt="" /></div>
+                <div><img src="../assets/images/prj1.jpg.crdownload" alt="" /></div>
                 <div>
                    
                 </div>

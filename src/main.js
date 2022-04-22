@@ -2,8 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './index.css'
 import router from './index.js'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import "bootstrap/dist/js/bootstrap.js"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 import mitt from 'mitt'
 const emitter = mitt()

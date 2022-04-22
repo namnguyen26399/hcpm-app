@@ -5,16 +5,22 @@
         <!-- <router-view class="w-full h-full"></router-view> -->
 
         <Project></Project>
+        <Staff />
+        <ListStaff />
     </div>
 </template>
 
 <script>
 import Header from "./Header.vue";
+import ListStaff from './ListStaff.vue';
 import Project from "./Project.vue";
+import Staff from './Staff.vue';
 export default {
     components: {
         Header,
         Project,
+        Staff,
+        ListStaff,
     },
 };
 </script>
