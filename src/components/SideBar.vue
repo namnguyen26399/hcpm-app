@@ -44,8 +44,18 @@
                         hidden
                     "
                 >
-                    <div class="submenu-item">Danh sách nhân viên</div>
-                    <div class="submenu-item">Biểu đồ nhân viên</div>
+                    <div
+                        @click="emitter.emit('clickList')"
+                        class="submenu-item"
+                    >
+                        Danh sách nhân viên
+                    </div>
+                    <div
+                        @click="emitter.emit('clickStaff')"
+                        class="submenu-item"
+                    >
+                        Biểu đồ nhân viên
+                    </div>
                     <div class="submenu-item">Thống kê</div>
                 </div>
             </div>
@@ -87,7 +97,6 @@
                 </div>
             </div>
             <div
-                
                 class="
                     sidebar-item
                     h-12
