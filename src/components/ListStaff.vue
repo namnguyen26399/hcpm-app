@@ -7,47 +7,45 @@
             </div>
             <div class="d-flex">
                 <div class="input-group search me-3">
-                    <input type="text" class="form-control" placeholder="Tìm khiếm...">
-                    <button class="btn btn-outline-secondary search-text" type="button">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+<!--                    <button class="btn btn-outline-secondary search-text" type="button">
                           <i class="fa fa-search"></i>
-                    </button>
+                    </button>-->
                 </div>
-                <AddStaff />
+                <AddStaff @addNewStaff="dataOfStaff"/>
             </div>
             
         </div>
 
-        <table class="table">
-            <tr class="table-heading">
-                <th class="table-title">Mã</th>
-                <th class="table-title">Ảnh</th>
-                <th class="table-title">Họ và tên</th>
-                <th class="table-title">Số điện thoại</th>
-                <th class="table-title">Email</th>
-                <th class="table-title">Tuổi</th>
-                <th class="table-title">Bộ phận</th>
-                <th class="table-title">Địa chỉ</th>
-                <th class="table-title">Thời gian tuyển</th>
-                <th class="table-title">Thông tin thêm</th>
-                <th class="table-title action">Action</th>
+        <table class="table" v-if="this.staffs.length">
+            <tr class="table-heading row w-100 m-0">
+                <th class="table-title col-1">Mã</th>
+                <th class="table-title col-2">Ảnh</th>
+                <th class="table-title col-2">Họ và tên</th>
+                <th class="table-title col-1">Tuổi</th>
+                <th class="table-title col-2">Số điện thoại</th>
+                <th class="table-title col-2">Bộ phận</th>
+                <th class="table-title action col-2">Action</th>
             </tr>
-            <tr 
-              v-for="staff in staffs" :key="staff.id" 
+          <tr
+              v-for="staff in staffs"
+              :key="staff.id"
               style="border-top: 1px solid #8080808c; font-size: 14px"
-            >
-                <td class="table-content"> {{ staff.code }} </td>
-                <td class="table-content"> {{ staff.image }} </td>
-                <td class="table-content"> {{ staff.name }} </td>
-                <td class="table-content"> {{ staff.phone }} </td>
-                <td class="table-content"> {{ staff.mail }} </td>
-                <td class="table-content"> {{ staff.age }} </td>
-                <td class="table-content"> {{ staff.lang }} </td>
-                <td class="table-content"> {{ staff.address }} </td>
-                <td class="table-content"> {{ staff.time }} </td>
-                <td class="table-content"> {{ staff.moreInfo }} </td>
-                <td class="table-content action"> <a href="#"> {{ staff.action }} </a> </td>
-            </tr>
+              class="row m-0"
+          >
+            <td class="table-content col-1"> {{ staff.code }} </td>
+            <td class="table-content col-2"> {{ staff.image }} </td>
+            <td class="table-content col-2"> {{ staff.name }} </td>
+            <td class="table-content col-1"> {{ staff.age }} </td>
+            <td class="table-content col-2"> {{ staff.phone }} </td>
+            <td class="table-content col-2"> {{ staff.lang }} </td>
+            <td class="table-content action col-2"> <a href="#">Edit</a> </td>
+          </tr>
         </table>
+
+        <div class="text-center mt-5 mb-5" v-else>
+          <h5 class="not-staff">Hiện tại chưa có nhân viên nào!</h5>
+        </div>
 
         <div class="text-right">
             <nav class="text-right">
@@ -78,66 +76,16 @@ export default {
     },
     data() {
         return {
-            staffs : [
-                {
-                    id: 0,
-                    code: 'NV0001',
-                    image: "",
-                    name: 'nam',
-                    phone: 19008098,
-                    mail: 'a@gmail.com',
-                    age: 18,
-                    lang: 'Java',
-                    address: 'Mỹ Đình',
-                    time: '23/04/2022',
-                    moreInfo: '',
-                    action: 'Edit',
-                },
-                {
-                    id: 1,
-                    code: 'NV0001',
-                    image: "",
-                    name: 'nam',
-                    phone: 19008098,
-                    mail: 'a@gmail.com',
-                    age: 18,
-                    lang: 'Java',
-                    address: 'Mỹ Đình',
-                    time: '23/04/2022',
-                    moreInfo: '',
-                    action: 'Edit',
-                },
-                {
-                    id: 2,
-                    code: 'NV0001',
-                    image: "",
-                    name: 'nam',
-                    phone: 19008098,
-                    mail: 'a@gmail.com',
-                    age: 18,
-                    lang: 'Java',
-                    address: 'Mỹ Đình',
-                    time: '23/04/2022',
-                    moreInfo: '',
-                    action: 'Edit',
-                },
-              {
-                id: 3,
-                code: 'NV0001',
-                image: "",
-                name: 'nam',
-                phone: 19008098,
-                mail: 'a@gmail.com',
-                age: 18,
-                lang: 'Java',
-                address: 'Mỹ Đình',
-                time: '23/04/2022',
-                moreInfo: '',
-                action: 'Edit',
-              },
-            ]
+            staffs : [],
         }
+    },
+  methods: {
+    dataOfStaff(item) {
+      this.staffs === this.staffs.unshift(item)
+      this.staffs.lang = item.lang
+      this.staffs.time = item.time
     }
+  }
 }
 </script>
 <style>

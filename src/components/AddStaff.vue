@@ -18,7 +18,7 @@
           aria-hidden="true"
       >
         <div class="modal-dialog modal-xl">
-          <div class="modal-content">
+          <div class="modal-content modal-add-staff">
             <div class="modal-header">
               <h5 class="modal-title">Thêm nhân viên</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -34,13 +34,24 @@
               <div class="col-lg-6 col-sm-12">
                 <div class="form">
                   <label class="form-label mb-0">Họ và tên</label>
-                  <input type="text" class="form-control fs-14 mt-1" placeholder="Ví dụ: Nguyễn Văn A">
+                  <input
+                      type="text"
+                      class="form-control fs-14 mt-1"
+                      placeholder="Ví dụ: Nguyễn Văn A"
+                      v-model="formStaff.name"
+                      required
+                  >
                 </div>
               </div>
               <div class="col-lg-6 col-sm-12">
                 <div class="form">
                   <label class="form-label mb-0">Tuổi</label>
-                  <input type="text" class="form-control fs-14 mt-1" placeholder="Nhập tuổi (18 - 35)">
+                  <input
+                      type="text"
+                      class="form-control fs-14 mt-1"
+                      placeholder="Nhập tuổi (18 - 35)"
+                      v-model="formStaff.age"
+                  >
                 </div>
               </div>
             </div>
@@ -48,13 +59,23 @@
               <div class="col-lg-6 col-sm-12">
                 <div class="form">
                 <label class="form-label mb-0">Số điện thoại</label>
-                <input type="text" class="form-control fs-14 mt-1" placeholder="Nhập số điện thoại">
+                <input
+                    type="text"
+                    class="form-control fs-14 mt-1"
+                    placeholder="Nhập số điện thoại"
+                    v-model="formStaff.phone"
+                >
               </div>
               </div>
               <div class="col-lg-6 col-sm-12">
                 <div class="form">
                   <label class="form-label mb-0">Email</label>
-                  <input type="text" class="form-control fs-14 mt-1" placeholder="Nhập email">
+                  <input
+                      type="text"
+                      class="form-control fs-14 mt-1"
+                      placeholder="Nhập email"
+                      v-model="formStaff.email"
+                  >
                 </div>
               </div>
             </div>
@@ -62,13 +83,22 @@
               <div class="col-lg-6 col-sm-12">
                 <div class="form">
                   <label class="form-label mb-0">Địa chỉ</label>
-                  <input type="text" class="form-control fs-14 mt-1" placeholder="Nhập địa chỉ">
+                  <input
+                      type="text"
+                      class="form-control fs-14 mt-1"
+                      placeholder="Nhập địa chỉ"
+                      v-model="formStaff.address"
+                  >
                 </div>
               </div>
               <div class="col-lg-6 col-sm-12">
                 <div class="form">
                   <label class="form-label mb-0">Thời gian tuyển</label>
-                  <input type="date" class="form-control fs-14 mt-1" value="23/04/2022">
+                  <input
+                      type="date"
+                      class="form-control fs-14 mt-1"
+                      v-model="formStaff.time"
+                  >
                 </div>
               </div>
             </div>
@@ -76,7 +106,7 @@
               <div class="col-lg-6 col-sm-12">
                 <div class="form">
                   <label class="form-label mb-0">Bộ phận</label>
-                  <select class="form-select fs-14 mt-1">
+                  <select class="form-select fs-14 mt-1" v-model="formStaff.lang">
                     <option class="fs-14" :value="option" v-for="(option, index) in language" :key="index">{{ option }}</option>
                   </select>
                 </div>
@@ -85,7 +115,7 @@
             </div>
             <div class="form">
               <label class="form-label mb-0">Thông tin thêm</label>
-              <textarea class="form-control fs-14 mt-1" row="8"></textarea>
+              <textarea class="form-control fs-14 mt-1" row="8" v-model="formStaff.moreInfo"></textarea>
             </div>
           </div>
           <div class="modal-footer border-top-0">
@@ -93,7 +123,7 @@
               Hủy
             </button>
 
-            <button type="button" class="btn btn-primary">Xác nhận</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="addStaff">Thêm</button>
           </div>
         </div>
       </div>
@@ -124,7 +154,14 @@
             >
               Quay lại
             </button>
-            <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Đồng ý</button>
+            <button
+                type="button"
+                class="btn btn-success btn-sm"
+                data-bs-dismiss="modal"
+                @click="cancelAdStaff"
+            >
+              Đồng ý
+            </button>
           </div>
         </div>
       </div>
@@ -135,17 +172,42 @@
 export default {
   data() {
     return {
+      newStaff: [],
+      formStaff: [
+        {
+          time: new Date(),
+          lang: '-- Chọn bộ phận --'
+        }
+      ],
       language: [ 'Java', 'Reactjs', 'Angular',  'Manual test', 'Automation test', '.net']
     }
   },
   methods: {
+    addStaff() {
+      if(this.formStaff.name &&
+          this.formStaff.age &&
+          this.formStaff.address &&
+          this.formStaff.email &&
+          this.formStaff.phone &&
+          this.formStaff.phone
+      ) {
+        const id = this.newStaff.length
+        let formStaffCoppy = {id,...this.formStaff}
+        this.newStaff === this.newStaff.push(formStaffCoppy)
+        this.formStaff = []
+        this.$emit('addNewStaff', formStaffCoppy)
+      }
 
+    },
+    cancelAdStaff() {
+      this.formStaff = []
+    }
   }
 }
 </script>
 <style>
 @import "../assets/scss/_staff.scss";
-.modal-xl {
+.modal-add-staff {
   padding: 20px 50px;
 }
 
