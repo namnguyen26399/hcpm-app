@@ -33,7 +33,7 @@
             <div class="row">
               <div class="col-lg-6 col-sm-12">
                 <div class="form">
-                  <label class="form-label mb-0">Họ và tên</label>
+                          <label class="form-label mb-0">Họ và tên</label>
                   <input
                       type="text"
                       class="form-control fs-14 mt-1"
@@ -173,12 +173,7 @@ export default {
   data() {
     return {
       newStaff: [],
-      formStaff: [
-        {
-          time: new Date(),
-          lang: '-- Chọn bộ phận --'
-        }
-      ],
+      formStaff: [],
       language: [ 'Java', 'Reactjs', 'Angular',  'Manual test', 'Automation test', '.net']
     }
   },
@@ -207,10 +202,6 @@ export default {
 </script>
 <style>
 @import "../assets/scss/_staff.scss";
-.modal-add-staff {
-  padding: 20px 50px;
-}
-
 .form-label {
   font-weight: 500;
 }
