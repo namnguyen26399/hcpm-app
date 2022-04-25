@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="isTogle"
-        class="w-1/5 h-screen border-r-[1px]"
+        class="w-1/6 h-screen border-r-[1px]"
         style="background-color: #ffff"
     >
         <div id="logo" class="cursor-pointer" @click="clickHome">
@@ -32,7 +32,7 @@
                     alt=""
                 />
                 Nhân viên
-                <img class="ml-28" src="../assets/images/down.png" alt="" />
+                <img class="ml-16" src="../assets/images/down.png" alt="" />
             </div>
             <div
                 id="submenu-employee"
