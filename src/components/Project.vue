@@ -22,6 +22,7 @@
                 <span>Trường đại học Công nghiệp Hà Nội</span>
                 <div class="mt-5">
                     <img
+                    data-aos="fade-up"
                         class="max-w-[600px] max-h-[400px] mx-auto"
                         src="../assets/images/prj1.jpg.crdownload"
                         alt=""
@@ -54,6 +55,7 @@
                 <span>Trường đại học Công nghiệp Hà Nội</span>
                 <div class="mt-5">
                     <img
+                    
                         class="max-w-[600px] max-h-[400px] mx-auto"
                         src="../assets/images/prj2.png.crdownload"
                         alt=""
@@ -148,7 +150,7 @@
                 <span> ( 12/12/2018 )</span>
                 <span class=""> - </span>
                 <span>Trường đại học Công nghiệp Hà Nội</span>
-                <div class="mt-5">
+                <div class="mt-5" >
                     <img
                         class="max-w-[600px] max-h-[400px] mx-auto"
                         src="../assets/images/prj1.jpg.crdownload"
