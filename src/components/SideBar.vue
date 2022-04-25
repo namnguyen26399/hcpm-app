@@ -1,25 +1,26 @@
 <template>
     <div
         v-if="isTogle"
-        class="w-1/5 h-screen"
-        style="background-color: #2f3c52"
+        class="w-1/5 h-screen border-r-[1px]"
+        style="background-color: #ffff"
     >
-        <div id="logo" class="">
+        <div id="logo" class="cursor-pointer" @click="clickHome">
             <img
                 class="w-[110px] h-[45px] mx-auto mt-2 mb-2"
                 src=".././assets/images/logo.png"
                 alt=""
             />
         </div>
-        <div class="h-[85%]" style="background-color: #3a4b66">
+        <div class="h-[85%]" style="background-color: #ffff">
             <div
+                @click="employeeSubmenu"
                 class="
                     sidebar-item
                     h-12
                     pl-3
                     text-base
                     font-normal
-                    text-center text-white
+                    text-center text-black
                     flex
                     relative
                 "
@@ -27,37 +28,23 @@
             >
                 <img
                     class="w-5 h-5 ml-3 mr-4"
-                    src="../assets/images/user1.png"
+                    src="../assets/images/user.png"
                     alt=""
                 />
                 Nhân viên
-                <div
-                    id="submenu-employee"
-                    class="
-                        absolute
-                        bg-[#5388BB]
-                        w-full
-                        h-auto
-                        top-[30%]
-                        left-[100%]
-                        rounded
-                        hidden
-                    "
-                >
-                    <div
-                        @click="emitter.emit('clickList')"
-                        class="submenu-item"
-                    >
-                        Danh sách nhân viên
-                    </div>
-                    <div
-                        @click="emitter.emit('clickStaff')"
-                        class="submenu-item"
-                    >
-                        Biểu đồ nhân viên
-                    </div>
-                    <div class="submenu-item">Thống kê</div>
+                <img class="ml-28" src="../assets/images/down.png" alt="" />
+            </div>
+            <div
+                id="submenu-employee"
+                class="bg-[#ffff] w-full h-auto rounded hidden"
+            >
+                <div @click="emitter.emit('clickList')" class="submenu-item">
+                    Danh sách nhân viên
                 </div>
+                <div @click="emitter.emit('clickStaff')" class="submenu-item">
+                    Biểu đồ nhân viên
+                </div>
+                <div class="submenu-item">Thống kê</div>
             </div>
             <div
                 class="
@@ -66,7 +53,7 @@
                     pl-3
                     text-base
                     font-normal
-                    text-center text-white
+                    text-center
                     flex
                     relative
                 "
@@ -74,27 +61,10 @@
             >
                 <img
                     class="w-5 h-5 ml-3 mr-4"
-                    src="../assets/images/user1.png"
+                    src="../assets/images/user.png"
                     alt=""
                 />
                 Khách hàng
-                <div
-                    class="
-                        absolute
-                        bg-[#5388BB]
-                        w-full
-                        h-auto
-                        top-[30%]
-                        left-[100%]
-                        rounded
-                        hidden
-                    "
-                    id="submenu-customer"
-                >
-                    <div class="submenu-item">Danh sách nhân viên</div>
-                    <div class="submenu-item">Biểu đồ nhân viên</div>
-                    <div class="submenu-item">Thống kê</div>
-                </div>
             </div>
             <div
                 class="
@@ -103,7 +73,7 @@
                     pl-3
                     text-base
                     font-normal
-                    text-center text-white
+                    text-center
                     flex
                     relative
                 "
@@ -148,31 +118,54 @@ export default {
     data() {
         return {
             isTogle: true,
+            num: 0,
         };
+    },
+    methods: {
+        employeeSubmenu() {
+            if (this.num % 2 == 0) {
+                document.getElementById("submenu-employee").style.display =
+                    "block";
+                this.num++;
+            } else {
+                document.getElementById("submenu-employee").style.display =
+                    "none";
+                this.num++;
+            }
+        },
+        clickHome() {
+            window.open("http://localhost:3000/home", "_self");
+        },
     },
 };
 </script>
 
 <style scoped>
 .sidebar-item {
+    border-bottom: 1px solid gray;
+}
+.sidebar-item:nth-child(1){
+    border-top: 1px solid gray;
 }
 .sidebar-item:hover {
-    background-color: #6271ff;
+    background-color: #e6e6e6;
     cursor: pointer;
 }
 .submenu-item {
+    background: rgb(243, 243, 243);
     height: 40px;
     line-height: 40px;
-    text-align: left;
+    text-align: center;
     padding-left: 12px;
     border-bottom: 1px solid gray;
+    padding-right: 24px;
 }
-.submenu-item:nth-child(3) {
-    border-bottom: 4px;
+.submenu-item:nth-child(1) {
 }
 .submenu-item:hover {
-    background-color: #579aff;
+    background-color: #d6d6d6;
     border-radius: 4px;
+    cursor: pointer;
 }
 .sidebar-item:hover #submenu-employee {
     display: inline;
@@ -182,5 +175,10 @@ export default {
 }
 .sidebar-item:hover #submenu-product {
     display: inline;
+}
+
+div {
+    font-size: 16px;
+    font-weight: 600;
 }
 </style>

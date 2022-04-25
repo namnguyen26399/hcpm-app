@@ -190,4 +190,7 @@ span {
     font-size: 18px;
     font-weight: 500;
 }
+textarea{
+    font-weight: 500;
+}
 </style>

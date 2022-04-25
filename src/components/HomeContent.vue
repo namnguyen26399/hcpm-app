@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-scroll">
+    <div class="">
         <div
             class="bg-white flex w-full h-full"
             style="border: 12px solid #f3f4f4"
@@ -33,7 +33,7 @@
             <div id="partner" class="flex justify-around mt-3">
                 <div>
                     <a href="#">
-                        <img src="../assets/images/ct3.jpg" alt=""
+                        <img src="../assets/images/ct4.jpg" alt=""
                     /></a>
                 </div>
                 <div>
@@ -43,7 +43,7 @@
                 </div>
                 <div>
                     <a href="#">
-                        <img src="../assets/images/ct3.jpg" alt=""
+                        <img src="../assets/images/ct4.jpg" alt=""
                     /></a>
                 </div>
                 <div>
