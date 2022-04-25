@@ -1,5 +1,5 @@
 <template>
-    <div class="staff">
+    <div class="staff h-full overflow-y-scroll">
         <div class="d-flex justify-content-between">
             <div class="">
                 <button class="btn btn-outline-secondary">Import</button>
@@ -36,8 +36,11 @@
                 style="border-top: 1px solid #8080808c; font-size: 14px"
                 class="row m-0"
             >
-                <td class="table-content col-1">{{ staff.code }}</td>
-                <td class="table-content col-2">{{ staff.image }}</td>
+
+                <td class="table-content col-1">{{ staff.id }}</td>
+                <td class="table-content col-2">
+                    <img class="rounded-[100%] w-16 h-16" :src="staff.imglink" alt="" />
+                </td>
                 <td class="table-content col-2">{{ staff.name }}</td>
                 <td class="table-content col-1">{{ staff.age }}</td>
                 <td class="table-content col-2">{{ staff.phone }}</td>
@@ -46,9 +49,12 @@
                     <a href="#" @click="showDetailStaff" class="border-bottom-0"
                         >Chi tiết</a
                     >
-                    <a href="#" @click="deleteStaff" class="border-bottom-0"
-                        >Xóa</a
-                    >
+                    <a
+                        href="#"
+                        @click="deleteStaff(staff)"
+                        class="border-bottom-0"
+                        >Xóa
+                    </a>
                 </td>
                 <td
                     class="table-content staff-detail w-100"
@@ -345,8 +351,12 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 import AddStaff from "./AddStaff.vue";
 export default {
+    created() {
+        this.getData();
+    },
     components: {
         AddStaff,
     },
@@ -354,6 +364,7 @@ export default {
         return {
             isShowDetail: false,
             staffs: [],
+            imglink2: "",
         };
     },
     methods: {
@@ -361,8 +372,12 @@ export default {
             this.staffs.unshift(item);
         },
         deleteStaff(staff) {
-            this.staffs = this.staffs.filter((item) => {
-                if (item.id === staff.id) return item;
+            var url =
+                "https://61d573892b4f730017a82847.mockapi.io/api/nguyensynam/v1/staff/" +
+                staff.id;
+            axios.delete(url).then(function (res) {
+                console.log("delete done");
+                this.reloadData();
             });
         },
         showDetailStaff() {
@@ -370,6 +385,26 @@ export default {
         },
         hideStaffDetail() {
             this.isShowDetail = false;
+        },
+
+        getData() {
+            var me = this;
+
+            axios
+                .get(
+                    "https://61d573892b4f730017a82847.mockapi.io/api/nguyensynam/v1/staff"
+                )
+                .then(function (res) {
+                    me.staffs = res.data;
+                    me.staffs.forEach((item) => {
+                        item.imglink =
+                            "https://qc-static.coccoc.com/a-images/46f/74b/46f74b9349efa9d711a8bca673444d2448da417ba53e51ee41eee3fe22d56390.jpg";
+                    });
+                    console.log("hello world");
+                });
+        },
+        reloadData() {
+            this.getData;
         },
     },
 };

@@ -13,7 +13,7 @@
                 leading-[50px]
             "
         >
-            Các dự án của công ty
+            {{namePage}}
         </div>
         <Project v-if="isProject"></Project>
         <Staff v-if="isStaff" />
@@ -62,6 +62,7 @@ export default {
             isListStaff: false,
             isStaff: false,
             isHomeContent: true,
+            namePage:"Khách hàng"
         };
     },
 };
