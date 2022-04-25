@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full bg-gray-100">
+    <div class="w-4/5 bg-gray-100">
         <Header></Header>
         <div
             class="
