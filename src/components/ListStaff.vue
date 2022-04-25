@@ -33,7 +33,7 @@
               style="border-top: 1px solid #8080808c; font-size: 14px"
               class="row m-0"
           >
-            <td class="table-content col-1"> {{ staff.code }} </td>
+            <td class="table-content col-1"> HN000{{ staff.id }} </td>
             <td class="table-content col-2"> {{ staff.image }} </td>
             <td class="table-content col-2"> {{ staff.name }} </td>
             <td class="table-content col-1"> {{ staff.age }} </td>
@@ -41,7 +41,7 @@
             <td class="table-content col-2"> {{ staff.lang }} </td>
             <td class="table-content action col-2">
               <a href="#" @click="showDetailStaff" class="border-bottom-0">Chi tiết</a>
-              <a href="#" @click="deleteStaff" class="border-bottom-0">Xóa</a>
+              <a href="#" @click="deleteStaff(staff)" class="border-bottom-0">Xóa</a>
             </td>
             <td class="table-content staff-detail w-100" v-if="isShowDetail">
               <div class="row border-bottom-0">
@@ -82,10 +82,10 @@
                 </button>
                 <!--Modal edit-->
                 <div class="modal fade" id="editStaff" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-xl">
+                  <div class="modal-dialog modal-lg">
                     <div class="modal-content modal-add-staff">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title">Chỉnh sửa nhân viên</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
@@ -192,7 +192,7 @@
 
 
 
-      <nav class="d-flex justify-content-center">
+<!--      <nav class="d-flex justify-content-center">
         <ul class="pagination">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous">
@@ -208,7 +208,7 @@
             </a>
           </li>
         </ul>
-      </nav>
+      </nav>-->
     </div>
 </template>
 <script>
@@ -228,8 +228,9 @@ export default {
       this.staffs.unshift(item)
     },
     deleteStaff(staff) {
-      this.staffs = this.staffs.filter((item) => {
-        if(item.id === staff.id) return item
+      this.staffs.filter((item) => {
+        console.log(item)
+        if(item.id !== staff.id) return item
       })
     },
     showDetailStaff() {

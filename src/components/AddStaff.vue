@@ -17,7 +17,7 @@
           tabindex="-1"
           aria-hidden="true"
       >
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content modal-add-staff">
             <div class="modal-header">
               <h5 class="modal-title">Thêm nhân viên</h5>
