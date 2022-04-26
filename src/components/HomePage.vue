@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-screen flex"><SideBar></SideBar> <MainContent></MainContent></div>
+    <div class="w-full h-screen flex overflow-hidden"><SideBar></SideBar> <MainContent></MainContent></div>
 </template>
 
 <script>

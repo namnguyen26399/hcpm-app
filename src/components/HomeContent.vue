@@ -1,6 +1,6 @@
 <template>
-    <div class="">
-        <div class="bg-white flex w-full h-full" style="border: 12px solid #f3f4f4">
+    <div class="staff">
+        <div class="bg-white flex w-full h-full">
             <v-chart class="chart w-[80%] h-[400px] bg-white border-none" :option="option"> </v-chart>
             <bar-chart
                 :colors="['#57C0EB', '#57C0EB']"
@@ -35,7 +35,6 @@
                 </div>
             </div>
         </div>
-        <div></div>
     </div>
 </template>
 

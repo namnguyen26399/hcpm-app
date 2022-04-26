@@ -1,7 +1,7 @@
 <template>
     <!-- <button @click="emitter.emit('say-hello', 'Hey, Stranger!')">Emit Event!</button> -->
 
-    <div class="w-full h-[61px] bg-white flex justify-between" style="align-items: center">
+    <div class="w-full h-[61px] bg-white flex justify-between heading" style="align-items: center">
         <div class="ml-1">
             <button @click="emitter.emit('clickTogle')">
                 <img class="w-10 h-10" style="width: 36px; height: 36px" src=".././assets/images/menu.png" alt="" />
@@ -38,5 +38,9 @@ export default {
 img {
     width: 24px;
     height: 24px;
+}
+
+.heading {
+  position: fixed;
 }
 </style>
