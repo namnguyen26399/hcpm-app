@@ -1,5 +1,5 @@
-<template >
-    <div class="bg-slate-50 " style="border-bottom: 12px solid #F3F4F4;">
+<template>
+    <div class="bg-slate-50" style="border-bottom: 12px solid #f3f4f4">
         <div class="pagination mx-auto w-fit">
             <a href="#">«</a>
             <a href="#">1</a>

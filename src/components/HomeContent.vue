@@ -1,14 +1,7 @@
 <template>
     <div class="">
-        <div
-            class="bg-white flex w-full h-full"
-            style="border: 12px solid #f3f4f4"
-        >
-            <v-chart
-                class="chart w-[80%] h-[400px] bg-white border-none"
-                :option="option"
-            >
-            </v-chart>
+        <div class="bg-white flex w-full h-full" style="border: 12px solid #f3f4f4">
+            <v-chart class="chart w-[80%] h-[400px] bg-white border-none" :option="option"> </v-chart>
             <bar-chart
                 :colors="['#57C0EB', '#57C0EB']"
                 loading="Loading..."
@@ -25,31 +18,20 @@
                 ]"
             ></bar-chart>
         </div>
-        <div
-            class="text-center font-semibold text-xl bg-white h-[142px]"
-            style="margin: 12px; margin-top: 0px"
-        >
+        <div class="text-center font-semibold text-xl bg-white h-[142px]" style="margin: 12px; margin-top: 0px">
             <div class="font-bold">Main Partner</div>
             <div id="partner" class="flex justify-around mt-3">
                 <div>
-                    <a href="#">
-                        <img src="../assets/images/ct4.jpg" alt=""
-                    /></a>
+                    <a href="#"> <img src="../assets/images/ct4.jpg" alt="" /></a>
                 </div>
                 <div>
-                    <a href="#">
-                        <img src="../assets/images/ct4.jpg" alt=""
-                    /></a>
+                    <a href="#"> <img src="../assets/images/ct4.jpg" alt="" /></a>
                 </div>
                 <div>
-                    <a href="#">
-                        <img src="../assets/images/ct4.jpg" alt=""
-                    /></a>
+                    <a href="#"> <img src="../assets/images/ct4.jpg" alt="" /></a>
                 </div>
                 <div>
-                    <a href="#">
-                        <img src="../assets/images/ct4.jpg" alt=""
-                    /></a>
+                    <a href="#"> <img src="../assets/images/ct4.jpg" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -61,21 +43,11 @@
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 import { PieChart } from "echarts/charts";
-import {
-    TitleComponent,
-    TooltipComponent,
-    LegendComponent,
-} from "echarts/components";
+import { TitleComponent, TooltipComponent, LegendComponent } from "echarts/components";
 import VChart, { THEME_KEY } from "vue-echarts";
 import { ref, defineComponent } from "vue";
 
-use([
-    CanvasRenderer,
-    PieChart,
-    TitleComponent,
-    TooltipComponent,
-    LegendComponent,
-]);
+use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent]);
 
 export default defineComponent({
     name: "HelloWorld",
@@ -99,13 +71,7 @@ export default defineComponent({
             legend: {
                 orient: "vertical",
                 left: "left",
-                data: [
-                    "Direct",
-                    "Email",
-                    "Ad Networks",
-                    "Video Ads",
-                    "Search Engines",
-                ],
+                data: ["Direct", "Email", "Ad Networks", "Video Ads", "Search Engines"],
             },
             series: [
                 {
