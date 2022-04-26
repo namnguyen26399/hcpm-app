@@ -153,7 +153,7 @@
                 <div class="mt-5" >
                     <img
                         class="max-w-[600px] max-h-[400px] mx-auto"
-                        src="../assets/images/prj1.jpg.crdownload"
+                        src="../assets/images/prj1.jpg"
                         alt=""
                     />
                 </div>

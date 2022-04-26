@@ -33,20 +33,22 @@
             <tr
                 v-for="staff in staffs"
                 :key="staff.id"
-                style="border-top: 1px solid #8080808c; font-size: 14px"
+                style="border-top: 1px solid #8080808c; font-size: 14px; align-items: center"
                 class="row m-0"
             >
 
                 <td class="table-content col-1">{{ staff.id }}</td>
                 <td class="table-content col-2">
-                    <img class="rounded-[100%] w-16 h-16" :src="staff.imglink" alt="" />
+                  <div class="avatar-staff border-bottom-0">
+                    <img class="w-100" :src="staff.imglink" alt="" />
+                  </div>
                 </td>
                 <td class="table-content col-2">{{ staff.name }}</td>
                 <td class="table-content col-1">{{ staff.age }}</td>
                 <td class="table-content col-2">{{ staff.phone }}</td>
                 <td class="table-content col-2">{{ staff.lang }}</td>
                 <td class="table-content action col-2">
-                    <a href="#" @click="showDetailStaff" class="border-bottom-0"
+                    <a href="#" @click="showDetailStaff(id)" class="border-bottom-0"
                         >Chi tiết</a
                     >
                     <a
@@ -93,7 +95,7 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-6">
-                                    <p>
+                                      <p>
                                         <span class="fw-bold">Tuổi:</span>
                                         {{ staff.age }}
                                     </p>
@@ -183,11 +185,7 @@
                                                     >
                                                     <input
                                                         type="text"
-                                                        class="
-                                                            form-control
-                                                            fs-14
-                                                            mt-1
-                                                        "
+                                                        class="form-control fs-14 mt-1"
                                                         placeholder="Ví dụ: Nguyễn Văn A"
                                                     />
                                                 </div>
@@ -200,10 +198,7 @@
                                                     >
                                                     <input
                                                         type="text"
-                                                        class="
-                                                            form-control
-                                                            fs-14
-                                                            mt-1
+                                                        class="form-control fs-14 mt-1
                                                         "
                                                         placeholder="Nhập tuổi (18 - 35)"
                                                     />
@@ -219,11 +214,7 @@
                                                     >
                                                     <input
                                                         type="text"
-                                                        class="
-                                                            form-control
-                                                            fs-14
-                                                            mt-1
-                                                        "
+                                                        class="form-control fs-14 mt-1"
                                                         placeholder="Nhập số điện thoại"
                                                     />
                                                 </div>
@@ -236,11 +227,7 @@
                                                     >
                                                     <input
                                                         type="text"
-                                                        class="
-                                                            form-control
-                                                            fs-14
-                                                            mt-1
-                                                        "
+                                                        class="form-control fs-14 mt-1"
                                                         placeholder="Nhập email"
                                                     />
                                                 </div>
@@ -255,11 +242,7 @@
                                                     >
                                                     <input
                                                         type="text"
-                                                        class="
-                                                            form-control
-                                                            fs-14
-                                                            mt-1
-                                                        "
+                                                        class="form-control fs-14 mt-1"
                                                         placeholder="Nhập địa chỉ"
                                                     />
                                                 </div>
@@ -272,11 +255,7 @@
                                                     >
                                                     <input
                                                         type="date"
-                                                        class="
-                                                            form-control
-                                                            fs-14
-                                                            mt-1
-                                                        "
+                                                        class="form-control fs-14 mt-1"
                                                     />
                                                 </div>
                                             </div>
@@ -331,7 +310,7 @@
             <h5 class="not-staff">Hiện tại chưa có nhân viên nào!</h5>
         </div>
 
-        <nav class="d-flex justify-content-center">
+<!--        <nav class="d-flex justify-content-center">
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link" href="#" aria-label="Previous">
@@ -347,7 +326,7 @@
                     </a>
                 </li>
             </ul>
-        </nav>
+        </nav>-->
     </div>
 </template>
 <script>
@@ -364,7 +343,6 @@ export default {
         return {
             isShowDetail: false,
             staffs: [],
-            imglink2: "",
         };
     },
     methods: {
@@ -380,8 +358,8 @@ export default {
                 this.reloadData();
             });
         },
-        showDetailStaff() {
-            this.isShowDetail = true;
+        showDetailStaff(id) {
+
         },
         hideStaffDetail() {
             this.isShowDetail = false;
