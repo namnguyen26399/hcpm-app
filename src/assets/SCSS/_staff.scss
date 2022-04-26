@@ -70,3 +70,13 @@ tr:nth-last-child(odd) {
 .modal-add-staff {
     padding: 20px 50px;
 }
+
+.avatar-staff {
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 2px;
+}
+
+.avatar-staff img {
+    border-radius: 5px;
+}
