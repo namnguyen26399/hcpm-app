@@ -1,5 +1,5 @@
 <template>
-    <div class="staff  h-full overflow-y-scroll  " >
+    <div class="staff h-full overflow-y-scroll">
         <div class="d-flex justify-content-between">
             <div class="">
                 <button class="btn btn-outline-secondary">Import</button>

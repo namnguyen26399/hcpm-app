@@ -1,190 +1,255 @@
 <template>
-    <div class="w-full h-[578px] bg-green-300" style="border: 12px solid gray; border-right: none">
-        <div class="employee-list scroll h-full bg-blue-500 overflow-y-scroll" id="scroll">
-            <table border="0" cellspacing="0" cellpadding="0">
-                <thead class="theadRow">
-                    <tr>
-                        <th>
-                        </th>
-                        <th>Mã nhân viên</th>
-                        <th>Ảnh</th>
-                        <th>Tên nhân viên</th>
-                        <th>Số điện thoại</th>
-                        <th>Email</th>
-                        <th>Ngày vào</th>
-                        <th>Tuổi</th>
-                        <th>Bộ phận</th>
-                        <th style="z-index: 1">Chức năng</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(staff, index) in staffs" :key="staff.id" @dblclick="rowOnDblClick(staff)">
-                        <td>
-                            <span><input id="$staff.id" @click="check(index)" type="checkbox" class="checked-box" /> </span>
-                        </td>
-                        <td>{{ staff.id }}</td>
-                        <td><img class="w-10 h-10 rounded-[100%] mx-auto" :src="staff.imglink" alt="" /></td>
-                        <td>{{ staff.name }}</td>
-                        <td>{{ staff.phone }}</td>
-                        <td>{{ staff.email }}</td>
-                        <td>15/12/2014</td>
-                        <td>{{ staff.age }}</td>
-                        <td>Tester</td>
-                        <td style="height: 40px; position: relative">
-                            <p style="text-align: left; padding-left: 0px; color: blue">Sửa</p>
-                            <button style="" class="btn-more-option" @click="more(index)"></button>
-                            <button @click="del(staff)" class="delete" style="">Xóa</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="staff h-full overflow-y-scroll">
+        <div class="d-flex justify-content-between">
+            <div class="">
+                <button class="btn btn-outline-secondary">Import</button>
+                <button class="btn btn-outline-secondary ms-3">Export</button>
+            </div>
+            <div class="d-flex">
+                <div class="input-group search me-3">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm..." />
+                    <!--                    <button class="btn btn-outline-secondary search-text" type="button">
+                          <i class="fa fa-search"></i>
+                    </button>-->
+                </div>
+                <AddStaff @addNewStaff="dataOfStaff" />
+            </div>
         </div>
+
+        <table class="table" v-if="this.staffs.length">
+            <tr class="table-heading row w-100 m-0">
+                <th class="table-title col-1">Mã</th>
+                <th class="table-title col-2">Ảnh</th>
+                <th class="table-title col-2">Họ và tên</th>
+                <th class="table-title col-1">Tuổi</th>
+                <th class="table-title col-2">Số điện thoại</th>
+                <th class="table-title col-2">Bộ phận</th>
+                <th class="table-title action col-2">Action</th>
+            </tr>
+            <tr v-for="staff in staffs" :key="staff.id" style="border-top: 1px solid #8080808c; font-size: 14px; align-items: center" class="row m-0">
+                <td class="table-content col-1">{{ staff.id }}</td>
+                <td class="table-content col-2">
+                    <div class="avatar-staff border-bottom-0">
+                        <img class="w-100" :src="staff.imglink" alt="" />
+                    </div>
+                </td>
+                <td class="table-content col-2">{{ staff.name }}</td>
+                <td class="table-content col-1">{{ staff.age }}</td>
+                <td class="table-content col-2">{{ staff.phone }}</td>
+                <td class="table-content col-2">{{ staff.lang }}</td>
+                <td class="table-content action col-2">
+                    <a href="#" @click="showDetailStaff(id)" class="border-bottom-0">Chi tiết</a>
+                    <a href="#" @click="deleteStaff(staff)" class="border-bottom-0">Xóa </a>
+                </td>
+                <td class="table-content staff-detail w-100" v-if="isShowDetail">
+                    <div class="row border-bottom-0">
+                        <div class="col-3">
+                            <div class="avatar">
+                                <img class="w-100" src="../assets/images/avatar.png" alt="avatar" />
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <p>
+                                        <span class="fw-bold">Họ và tên:</span>
+                                        {{ staff.name }}
+                                    </p>
+                                    <p>
+                                        <span class="fw-bold">Số điện thoại:</span>
+                                        {{ staff.phone }}
+                                    </p>
+                                    <p>
+                                        <span class="fw-bold">Email:</span>
+                                        {{ staff.email }}
+                                    </p>
+                                    <p>
+                                        <span class="fw-bold">Địa chỉ:</span>
+                                        {{ staff.address }}
+                                    </p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p>
+                                        <span class="fw-bold">Tuổi:</span>
+                                        {{ staff.age }}
+                                    </p>
+                                    <p>
+                                        <span class="fw-bold">Mã nhân viên:</span>
+                                        HN{{ staff.id }}
+                                    </p>
+                                    <p>
+                                        <span class="fw-bold">Bộ phận:</span>
+                                        {{ staff.lang }}
+                                    </p>
+                                    <p>
+                                        <span class="fw-bold">Thời gian tuyển:</span>
+                                        {{ staff.time }}
+                                    </p>
+                                </div>
+                                <p>
+                                    <span class="fw-bold">Thông tin khác:</span>
+                                    {{ staff.moreInfo }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end border-bottom-0">
+                        <button class="btn btn-secondary btn-sm" @click="hideStaffDetail">Đóng</button>
+                        <button type="button" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#editStaff" @click="editStaff">Chỉnh sửa</button>
+                        <!--Modal edit-->
+                        <div class="modal fade" id="editStaff" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content modal-add-staff">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <label class="form-label">Ảnh đại diện</label>
+                                            <div class="avatar m-auto">
+                                                <img class="w-100" src="../assets/images/avatar.png" alt="avatar" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="form">
+                                                    <label class="form-label mb-0">Họ và tên</label>
+                                                    <input type="text" class="form-control fs-14 mt-1" placeholder="Ví dụ: Nguyễn Văn A" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="form">
+                                                    <label class="form-label mb-0">Tuổi</label>
+                                                    <input type="text" class="form-control fs-14 mt-1" placeholder="Nhập tuổi (18 - 35)" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="form">
+                                                    <label class="form-label mb-0">Số điện thoại</label>
+                                                    <input type="text" class="form-control fs-14 mt-1" placeholder="Nhập số điện thoại" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="form">
+                                                    <label class="form-label mb-0">Email</label>
+                                                    <input type="text" class="form-control fs-14 mt-1" placeholder="Nhập email" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="form">
+                                                    <label class="form-label mb-0">Địa chỉ</label>
+                                                    <input type="text" class="form-control fs-14 mt-1" placeholder="Nhập địa chỉ" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="form">
+                                                    <label class="form-label mb-0">Thời gian tuyển</label>
+                                                    <input type="date" class="form-control fs-14 mt-1" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="form">
+                                                    <label class="form-label mb-0">Bộ phận</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12"></div>
+                                        </div>
+                                        <div class="form">
+                                            <label class="form-label mb-0">Thông tin thêm</label>
+                                            <textarea class="form-control fs-14 mt-1" row="8"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                        <button type="button" class="btn btn-success">Lưu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="text-center mt-5 mb-5" v-else>
+            <h5 class="not-staff">Hiện tại chưa có nhân viên nào!</h5>
+        </div>
+
+        <!--        <nav class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>-->
     </div>
 </template>
-
 <script>
 import axios from "axios";
-
+import AddStaff from "./AddStaff.vue";
 export default {
     created() {
         this.getData();
     },
+    components: {
+        AddStaff,
+    },
     data() {
         return {
+            isShowDetail: false,
             staffs: [],
         };
     },
     methods: {
+        dataOfStaff(item) {
+            this.staffs.unshift(item);
+        },
+        deleteStaff(staff) {
+            var url = "https://61d573892b4f730017a82847.mockapi.io/api/nguyensynam/v1/staff/" + staff.id;
+            axios.delete(url).then(function (res) {
+                console.log("delete done");
+                this.reloadData();
+            });
+        },
+        showDetailStaff(id) {},
+        hideStaffDetail() {
+            this.isShowDetail = false;
+        },
+
         getData() {
             var me = this;
 
             axios.get("https://61d573892b4f730017a82847.mockapi.io/api/nguyensynam/v1/staff").then(function (res) {
                 me.staffs = res.data;
+                me.staffs.forEach((item) => {
+                    item.imglink = "https://qc-static.coccoc.com/a-images/46f/74b/46f74b9349efa9d711a8bca673444d2448da417ba53e51ee41eee3fe22d56390.jpg";
+                });
+                console.log("hello world");
             });
+        },
+        reloadData() {
+            this.getData;
         },
     },
 };
 </script>
-
-<style scoped>
-.employee-list {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(255, 0, 0);
-    position: relative;
-}
-
-th {
-    background-color: #eceef1;
-    border: none;
-    border-right: 1px solid rgb(218, 218, 218);
-    border-bottom: 1px solid rgb(218, 218, 218);
-    border-top: 1px solid rgb(218, 218, 218);
-    font-size: 13px;
-    height: 40px;
-    z-index: 1;
-    text-align: center;
-}
-
-tr td {
-    border: none;
-    border-right: 1px solid rgb(218, 218, 218);
-    text-align: center;
-    height: 40px;
-}
-
-thead th:nth-child(1) {
-    width: 42px;
-}
-
-thead th:nth-child(2) {
-    width: 110px;
-}
-
-thead th:nth-child(3) {
-    width: 110px;
-}
-
-thead th:nth-child(4) {
-    width: 170px;
-}
-
-thead th:nth-child(5) {
-    width: 110px;
-}
-
-thead th:nth-child(6) {
-    width: 210px;
-}
-
-thead th:nth-child(7) {
-    width: 110px;
-}
-
-thead th:nth-child(8) {
-    width: 60px;
-}
-thead th:nth-child(9) {
-    width: 120px;
-}
-thead th:nth-child(10) {
-    width: 80px;
-}
-
-table {
-    border-left: 1px solid rgb(218, 218, 218);
-}
-
-table tr td {
-    border-bottom: 1px solid rgb(218, 218, 218);
-}
-
-span input {
-    width: 20px;
-    height: 20px;
-}
-
-tr {
-    font-size: 12px;
-}
-
-tr:nth-child(2n) {
-    background-color: #eceef1;
-}
-
-.theadRow {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 5;
-}
-
-tr td:hover {
-    cursor: pointer;
-}
-  .btn-more-option {
-        width: 30px;
-        height: 20px;
-        background: url(../.././assets/Sprites.64af8f61.svg) no-repeat;
-        background-position: -890px -358px;
-        margin-left: 10px;
-        border: none;
-        z-index: 2;
-        position: absolute;
-        right: 8px;
-        top: 8px;
-    }
-    .delete {
-        width: 94px;
-        height: 36px;
-        background-color: #eceeef;
-        position: absolute;
-        border: 1px solid #c0c0c0;
-        z-index: 3;
-        bottom: -30px;
-        left: -10px;
-        border-radius: 4px;
-        display: none;
-    }
-
+<style>
+@import "../assets/scss/_staff.scss";
 </style>
