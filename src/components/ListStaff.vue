@@ -410,6 +410,5 @@ export default {
 };
 </script>
 <style>
-@import "src/assets/SCSS/_staff.scss";
-
+@import "../assets/scss/_staff.scss";
 </style>
