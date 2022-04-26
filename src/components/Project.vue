@@ -1,5 +1,5 @@
 <template>
-    <div id="Project" class="overflow-scroll w-auto h-full overflow-y-scroll bg-white mt-3 ml-3 pb-[110px]">
+    <div id="Project" class=" w-auto h-[562px] overflow-y-scroll bg-white mt-[12px] ml-3">
         <div class="">
             <div class="ml-3 mt-3">
                 <span>1</span>

@@ -1,5 +1,5 @@
 <template>
-    <div class="w-5/6 bg-gray-100">
+    <div class="w-5/6 bg-gray-100 h-screen">
         <Header></Header>
         <div class="w-full h-[50px] border-t-2 bg-white pl-3 font-medium text-base leading-[50px]">
             {{ namePage }}
