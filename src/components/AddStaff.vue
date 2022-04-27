@@ -3,7 +3,7 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStaff">Thêm nhân viên</button>
 
         <div class="modal fade" id="addStaff" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content modal-add-staff">
                     <div class="modal-header">
                         <h5 class="modal-title">Thêm nhân viên</h5>

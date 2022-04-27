@@ -62,11 +62,18 @@
 
 .table-title , .table-content {
     padding: 12px 8px;
+    display: flex;
+    align-items: center;
+}
+
+.table-content {
+    max-height: 45px;
 }
 
 .action {
     border-left: 1px solid #7a808980;
-    text-align: center;
+    padding: 15px;
+    justify-content: center;
 }
 
 .avatar {
@@ -80,13 +87,13 @@
 }
 
 .modal-add-staff {
-    padding: 20px 50px;
+    padding: 5px 20px;
 }
 
 .avatar-staff {
-    max-width: 40px;
-    max-height: 40px;
-    border-radius: 2px;
+    max-width: 20px;
+    max-height: 20px;
+    //border-radius: 2px;
 }
 
 .avatar-staff img {
