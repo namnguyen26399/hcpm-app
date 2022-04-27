@@ -1,6 +1,14 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStaff">Thêm nhân viên</button>
+        <button
+            type="button"
+            class="btn btn-primary btn-add-staff"
+            data-bs-toggle="modal"
+            data-bs-target="#addStaff"
+            title="Thêm nhân viên"
+        >
+          Thêm
+        </button>
 
         <div class="modal fade" id="addStaff" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-lg">
