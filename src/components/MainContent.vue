@@ -5,7 +5,7 @@
             class="
                 w-full
                 h-[50px]
-                border-t-2
+                border-t-[1px]
                 bg-white
                 pl-3
                 font-medium

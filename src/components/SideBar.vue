@@ -32,13 +32,13 @@
                     alt=""
                 />
                 Nhân viên
-                <img class="ml-16" src="../assets/images/down.png" alt="" />
+                <img class="ml-8" src="../assets/images/down.png" alt="" />
             </div>
             <div
                 id="submenu-employee"
                 class="bg-[#ffff] w-full h-auto rounded hidden"
             >
-                <div @click="emitter.emit('clickList')" class="submenu-item">
+                <div @click="emitter.emit('clickList')" class="submenu-item" >
                     Danh sách nhân viên
                 </div>
                 <div @click="emitter.emit('clickStaff')" class="submenu-item">
@@ -142,30 +142,32 @@ export default {
 
 <style scoped>
 .sidebar-item {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #F3F4F2;
 }
 .sidebar-item:nth-child(1){
-    border-top: 1px solid gray;
+    border-top: 1px solid #F3F4F2;
+            background: rgb(243, 243, 243);
+
 }
 .sidebar-item:hover {
-    background-color: #e6e6e6;
+        background-color: rgb(243, 243, 243);
     cursor: pointer;
 }
 .submenu-item {
-    background: rgb(243, 243, 243);
     height: 40px;
     line-height: 40px;
     text-align: center;
     padding-left: 12px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #f3f4f2;
     padding-right: 24px;
 }
 .submenu-item:nth-child(1) {
 }
 .submenu-item:hover {
-    background-color: #d6d6d6;
     border-radius: 4px;
     cursor: pointer;
+            background-color: rgb(243, 243, 243);
+
 }
 .sidebar-item:hover #submenu-employee {
     display: inline;
